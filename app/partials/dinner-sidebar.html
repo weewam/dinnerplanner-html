@@ -1,9 +1,39 @@
-People: <input type="number" ng-model="numberOfGuests" ng-change="setNumberOfGuest(numberOfGuests)"/>
+<section id="left-sidebar">
+  <figure class="logo">
+    <img ng-src="/images/logo.png">
+  </figure>
 
-<!-- TODO in Lab 5: Display the items on the menu with cost for each -->
+  <div class="menu">
+    <h3>Menu</h3>
 
+    <div class="guests group">
+      Guests
 
-<!-- Displaying number of guests both in input box and here is redundant. It is here only for the example
-purpose so you can see how some information from the model can be retrieved. In Lab 5 you will replace 
-this with Total price of the menu -->
-Total number of guest: {{getNumberOfGuests()}}
+      <div class="input-container group">
+        <span class="decrement" ng-model="numberOfGuests" ng-click="setNumberOfGuest(getNumberOfGuests() - 1)">-</span>
+        <input type="text" value="{{getNumberOfGuests()}}">
+        <span class="increment" ng-model="numberOfGuests" ng-click="setNumberOfGuest(getNumberOfGuests() + 1)">+</span>
+      </div>
+    </div>
+
+    <div class="course group" data-course="Appetizers">
+      <h4>Starter</h4>
+      <p><span class="name">{{ getAppetizer().name || "None chosen" }}</span><span class="currency">kr</span><span class="cost">{{ getAppetizer() ? (getCostOfDish(getAppetizer()) * getNumberOfGuests()) : "0" }}</span></p>
+    </div>
+
+    <div class="course group" data-course="Main Dish">
+      <h4>Main dish</h4>
+      <p><span class="name">{{ getMainDish().name || "None chosen" }}</span><span class="currency">kr</span><span class="cost">{{ getMainDish() ? (getCostOfDish(getMainDish()) * getNumberOfGuests()) : "0" }}</span></p>
+    </div>
+
+    <div class="course group" data-course="Desserts">
+      <h4>Dessert</h4>
+      <p><span class="name">{{ getDessert().name || "None chosen" }}</span><span class="currency">kr</span><span class="cost">{{ getDessert() ? (getCostOfDish(getDessert()) * getNumberOfGuests()) : "0" }}</span></p>
+    </div>
+  </div>
+
+  <footer>
+    <p class="total-cost">Total cost: <span class="currency">kr</span><span class="cost">{{ getCostOfMenu() * getNumberOfGuests() }}</span></p>
+    <a ng-href="#/overview"><button id="confirmMenu" class="button">Confirm dinner</button><a>
+  </footer>
+</section>

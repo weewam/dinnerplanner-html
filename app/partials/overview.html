@@ -1,0 +1,63 @@
+<!-- We include the sidebar as it is shared across two screens. -->
+<ng-include src="'partials/topbar.html'"></ng-include>
+
+<div id="dinnerOverview" class="page-container">
+  <div class="subheader">
+    <div class="content-container group">
+      <h3>My Dinner: {{ getNumberOfGuests() }} people</h3>
+      <a ng-href="#/search"><button id="headerButton" class="rounded">Go back and edit dinner</button></a>
+    </div>
+  </div>
+  
+  <div class="dishes content-container group">
+    <div class="column">
+      <h2>Starter</h2>
+
+      <div class="dish" data-course="Appetizers">
+        <figure>
+          <img src="{{ getAppetizer().image || 'images/placeholder.jpg' }}" alt="" id="overImg">
+        </figure>
+
+        <div class="info group">
+          <h4 id="nameDish">{{ getAppetizer().name || "None chosen" }}</h4>
+          <p><span id="priceDish">{{ getAppetizer() ? (getCostOfDish(getAppetizer()) * getNumberOfGuests()) : "0" }}</span> SEK</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="column">
+      <h2>Main Dish</h2>
+
+      <div class="dish" data-course="Main Dish">
+        <figure>
+          <img src="{{ getMainDish().image || 'images/placeholder.jpg' }}" alt="" id="overImg">
+        </figure>
+
+        <div class="info group">
+          <h4 id="nameDish">{{ getMainDish().name || "None chosen" }}</h4>
+          <p><span id="priceDish">{{ getMainDish() ? (getCostOfDish(getMainDish()) * getNumberOfGuests()) : "0" }}</span> SEK</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="column">
+      <h2>Dessert</h2>
+
+      <div class="dish" data-course="Desserts">
+        <figure>
+          <img ng-src="{{ getDessert().image || 'images/placeholder.jpg' }}" alt="" id="overImg">
+        </figure>
+
+        <div class="info group">
+          <h4 id="nameDish">{{ getDessert().name || "None chosen" }}</h4>
+          <p><span id="priceDish">{{ getDessert() ? (getCostOfDish(getDessert()) * getNumberOfGuests()) : "0" }}</span> SEK</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="content-container group">
+    <a ng-href="#/preperation"><button id="printButton" class="rounded">Print Full Recipe</button></a>
+    <p id="totalAmount">Total: {{ getCostOfMenu() * getNumberOfGuests() }} SEK</p>
+  </footer>
+</div>

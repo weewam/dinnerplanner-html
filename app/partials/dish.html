@@ -1,5 +1,51 @@
 <!-- We include the sidebar as it is shared across two screens. -->
 <ng-include src="'partials/dinner-sidebar.html'" ng-controller="DinnerCtrl"></ng-include>
 
-<!-- TODO in Lab 5: Display the dish information including image, Description, 
-Instructions, Ingredients and total cost. -->
+<section id="specific-dish" class="page-container" ng-switch="status">
+  <div class="loading" ng-switch-when="loading">
+    <div class="spinner">
+      <div class="double-bounce1"></div>
+      <div class="double-bounce2"></div>
+    </div>
+
+    <span>Loading dish</span>
+  </div>
+
+  <div class="error" ng-switch-when="no-connection">
+    <span>Connection error</span>
+
+    <a ng-href="#/search"><button class="back button rounded">Back to previous page</button></a>
+  </div>
+
+  <div class="page" ng-switch-when="success">
+    <a ng-href="#/search"><button class="back button rounded">back</button></a>
+
+    <figure class="dish">
+      <h1 class="name">{{ getDish().name }}</h1>
+      <img ng-src="{{ getDish().image }}">
+    </figure>
+
+    <div class="content-container">
+    	<button ng-click="addDishToMenu()" class="add-dish rounded button">+</button>
+
+		<p class="description">{{ getDish().description }}</p>
+
+		<h2>Instructions</h2>
+		<p class="instructions">{{ getDish().instructions }}</p>
+
+		<h2>Ingredients for {{ getNumberOfGuests() }} people</h2>
+
+		<table class="ingredients">
+			<tr ng-repeat="ingredient in getDish().ingredients" class='ingredient'>
+				<td><span class='quantity'>{{ (ingredient.quantity * getNumberOfGuests()) }} {{ ingredient.unit }}</span>{{ ingredient.name }}</td>
+				<td class="cost">{{ (ingredient.quantity * getNumberOfGuests()) }}<span class='currency'>kr</span></td>
+			</tr>
+
+			<tr class='total-cost'>
+				<td>Total cost:</td>
+				<td class='cost'>{{ getPriceOfDish() * getNumberOfGuests() }}<span class='currency'>kr</span></td>
+			</tr>
+		</table>
+    </div>
+  </div>
+</section>

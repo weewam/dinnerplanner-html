@@ -8,14 +8,15 @@ which module to associate the app with. In app.js we create the "dinnerPlanner" 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Dinner planner</title>
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
-    <!-- jQuery -->
-    <script src="bower_components/jquery/dist/jquery.js"></script>
-    <!-- Bootstrap JavaScript, needed if you want for instance tabs, models, popovers etc. -->
-    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- Font, courtesy of google -->
+    <link href='https://fonts.googleapis.com/css?family=Quicksand:400,300,700' rel='stylesheet' type='text/css'>
+    
+    <!-- General css -->
+    <link rel="stylesheet" href="/css/stylesheet.css">
+
     <!-- Angular JavaScript including routing and resource modules  -->
     <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-resource/angular-resource.js"></script>
     
@@ -25,6 +26,8 @@ which module to associate the app with. In app.js we create the "dinnerPlanner" 
     <script src="js/searchCtrl.js"></script>
     <script src="js/dinnerCtrl.js"></script>
     <script src="js/dishCtrl.js"></script>
+    <script src="js/overviewCtrl.js"></script>
+    <script src="js/preperationCtrl.js"></script>
 
   </head>
   <body>
@@ -33,7 +36,7 @@ which module to associate the app with. In app.js we create the "dinnerPlanner" 
 
     <!-- ng-view Angular directive is where the partials will be loaded. app.js configures the $routingProvider
     where you specify which partial should be loaded when. -->
-    <div ng-view></div>
+    <div id="app-container" ng-view></div>
 
   </body>
 </html>

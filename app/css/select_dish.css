@@ -1,0 +1,193 @@
+#select-dish {
+	background: #f2f4f7;
+	min-height: 100%;
+}
+
+/* Loading */
+#select-dish .loading {
+	margin-top: 100px;
+}
+
+#select-dish .loading .spinner {
+	width: 60px;
+	height: 60px;
+
+	position: relative;
+	margin: 0 auto;
+}
+
+#select-dish .loading span {
+	font-size: 2em;
+}
+
+/* Error */
+#select-dish .error {
+	margin-top: 100px;
+}
+
+#select-dish .error span {
+	display: block;
+	font-size: 1.5em;
+	font-weight: 300;
+	text-align: center;
+}
+
+#select-dish .error p {
+	color: #737480;
+	display: block;
+	text-align: center;
+	margin: 20px 0 0;
+}
+
+/* Page */
+#select-dish header{
+	margin: 40px 0 0;
+	position: relative;
+}
+
+#select-dish header h1{
+	line-height: 1em;
+	text-align: center;
+}
+
+#select-dish header > p{
+	text-align: center;
+	margin: 20px 0 0;
+	color: #737480;
+}
+
+#select-dish header .search-container{
+	margin: 50px auto 0;
+	position: relative;
+	width: 400px;
+	border-radius: 50px;
+	box-shadow: 0px 3px 12px 0 rgba(0, 0, 0, 0.08);
+	overflow: hidden;
+
+	font-family: 'Quicksand', sans-serif;
+}
+
+#select-dish header .search-container input{
+	outline: none;
+	border: none;
+
+	font-size: 14px;
+	line-height: 18px;
+	font-family: inherit;
+}
+
+#select-dish header .search-container input[type="text"]{
+	float: left;
+	margin: 0 auto;
+
+	width: 100%;
+	padding: 16px 114px 16px 26px;
+	background: #fff;
+	box-sizing: border-box;
+}
+
+#select-dish header .search-container input[type="submit"]{
+	position: absolute;
+	top: 0px;
+	right: 0px;
+
+	width: 100px;
+	height: 100%;
+	background: #36d16f;
+
+	color: #fff;
+	font-weight: 700;
+	cursor: pointer;
+}
+
+#select-dish header #course-filter{
+	margin: 20px auto 0;
+	width: 346px;
+}
+
+#select-dish header #course-filter .course{
+	float: left;
+}
+
+#select-dish header #course-filter .course[data-course="starter"],
+#select-dish header #course-filter .course[data-course="main dish"]{
+	margin-right: 40px;
+}
+
+#select-dish header #course-filter input{
+	float: left;
+	margin: 5px 10px 5px 0;
+}
+
+#select-dish header #course-filter p{
+	display: inline-block;
+	margin: 0;
+
+	color: #737480;
+    font-size: 16px;
+}
+
+#select-dish #dishes{
+	margin-top: 20px;
+}
+
+#select-dish .dish{
+	cursor: pointer;
+	overflow: hidden;
+	float: left;
+	margin: 40px 0 0 0;
+
+	width: calc(33% - 20px);
+	border-radius: 2px;
+
+	background: #fff;
+	border: 1px solid #ebedf2;
+    border-bottom: none;
+    box-shadow: 0px 5px 15px 0 rgba(0, 0, 0, 0.08);
+
+	box-sizing: border-box;
+}
+
+#select-dish .dish:nth-child(3n+2){
+	margin-right: 30px;
+	margin-left: 30px;
+}
+
+#select-dish .dish figure{
+	margin: 0;
+	height: 0;
+	width: 100%;
+	padding-bottom: 56.26%;
+	position: relative;
+	overflow: hidden;
+}
+
+#select-dish .dish figure img{
+	position: absolute;
+	width: 100%;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+#select-dish .dish .text{
+	padding: 20px;
+}
+
+#select-dish .dish h3{
+    font-size: 16px;
+    line-height: 1.5em;
+    text-align: center;
+    margin: 10px auto;
+    height: 4.5em;
+}
+
+#select-dish .dish p{
+	overflow: hidden;
+	height: 6em;
+	margin: 0;
+
+	color: #737480;
+	font-size: 13px;
+	text-align: center;
+	line-height: 1.5em;
+}

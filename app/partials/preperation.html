@@ -1,0 +1,32 @@
+<!-- We include the sidebar as it is shared across two screens. -->
+<ng-include src="'partials/topbar.html'"></ng-include>
+
+<div id="dinnerPreperation" class="page-container">
+  <div class="subheader">
+    <div class="content-container group">
+      <h3>My Dinner: {{ getNumberOfGuests() }} people</h3>
+      <a ng-href="#/search"><button id="headerButton" class="rounded">Go back and edit dinner</button></a>
+    </div>
+  </div>
+  
+  <div class="dishes content-container">
+    <h1 ng-if="getFullMenu().length == 0" id='notChosenPrep'>No dishes is chosen</h1>
+
+    <div ng-if="getFullMenu().length > 0" ng-repeat="dish in getFullMenu()" class='dine'>
+      <figure>
+        <img src='{{ dish.image }}' alt='Image of Food' id='prepImg'>
+        <h2>{{ dish.name }}</h2>
+      </figure>
+
+      <div class='content'>
+        <p>{{ dish.instructions }}</p>
+
+        <h3>Ingredients</h3>
+
+        <ul class='group'>
+          <li ng-repeat="ingredient in dish.ingredients">{{ (ingredient.quantity * getNumberOfGuests())  }} {{ ingredient.name }}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,6 +1,6 @@
 // Dinner controller that we use whenever we have view that needs to 
 // display or modify the dinner menu
-dinnerPlannerApp.controller('DinnerCtrl', function ($scope,Dinner) {
+dinnerPlannerApp.controller('OverviewCtrl', function ($scope, Dinner) {
 
   $scope.numberOfGuests = Dinner.getNumberOfGuests();
   $scope.appetizer = Dinner.getSelectedDish("Appetizers");

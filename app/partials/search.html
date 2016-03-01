@@ -1,5 +1,57 @@
 <!-- We include the sidebar as it is shared across two screens. -->
 <ng-include src="'partials/dinner-sidebar.html'" ng-controller="DinnerCtrl"></ng-include>
 
+<section id="select-dish" class="page-container shown">
+  <div class="content-container">
+    <header class="group">
+      <h1>Select dish</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+
+      <div class="search-container group">
+        <input type="text" name="search" placeholder="What would you like to cook today?" ng-model="query">
+        <input id="searchButton" type="submit" name="submit" value="Search" ng-click="search()">
+      </div>
+
+      <div id="course-filter" class="group">
+        <div class="course" data-course="starter">
+          <input type="radio" ng-model="course" ng-change="search()" name="course" value="appetizer">
+          <p>Starter</p>
+        </div>
+
+        <div class="course" data-course="main dish">
+          <input type="radio" ng-model="course" ng-change="search()" name="course" value="main" checked>
+          <p>Main Dish</p>
+        </div>
+
+        <div class="course" data-course="dessert">
+          <input type="radio" ng-model="course" ng-change="search()" name="course" value="dessert">
+          <p>Dessert</p>
+        </div>
+      </div>
+    </header>
+
+    <div class="content" class="group" ng-switch="status">
+		<div class="loading" ng-switch-when="loading"><div class="spinner"><div class="double-bounce1"></div><div class="double-bounce2"></div></div><span>Loading dish</span></div>
+    	<div class='error' ng-switch-when="no-result"><span>No search result</span><p>Try searching for something else ...</p></div>
+		<div class='error' ng-switch-when="connection-error"><span>Connection error</span><p>Try again soon...</p></div>
+    	
+
+	    <div id="dishes" class="group" ng-switch-when="success">
+			<div ng-repeat="dish in dishes" class="dish" data-course="{{dish.Category}}">
+				<a ng-href="#/dish/{{dish.RecipeID}}">
+					<figure>
+						<img ng-src="{{dish.ImageURL}}">
+					</figure>
+
+					<div class="text">
+						<h3>{{dish.Title}}</h3>
+					</div>
+				</a>
+			</div>
+	    </div>
+	</div>
+  </div>
+</section>
+
 <!-- TODO in Lab 5: Display the input box for search (you can ignore the type dropdown since BigOven does
 not support it in free version) and list all the dishes that match the search. -->
